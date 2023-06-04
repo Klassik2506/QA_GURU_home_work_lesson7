@@ -8,6 +8,7 @@ from openpyxl import load_workbook
 from zipfile import ZipFile
 from pypdf import PdfReader
 
+# TODO задание пути к папке resources
 download_folder = 'resources'
 current_path = os.path.abspath(__file__)
 directory_path = os.path.dirname(current_path)
@@ -16,7 +17,7 @@ resources_path = os.path.normpath(resources_path)
 print(resources_path)
 
 
-# TODO оформить в тест, добавить ассерты и использовать универсальный путь
+# TODO работа со скачиванием zip, оформить в тест, добавить ассерты и использовать универсальный путь
 def test_download_file_with_browser():
     options = webdriver.ChromeOptions()
     prefs = {
@@ -39,7 +40,7 @@ def test_download_file_with_browser():
     assert file_size > 0, f"The file {downloaded_file_path} is empty"
 
 
-# TODO оформить в тест, сохранять и читать из tmp, использовать универсальный путь
+# TODO работа со скачиванием изображений, оформить в тест, сохранять и читать из tmp, использовать универсальный путь
 def test_downloaded_file_size():
     url = 'https://w7.pngwing.com/pngs/708/311/png-transparent-icon-logo-twitter-logo-twitter-logo-blue-social-media-area.png'
 
@@ -54,7 +55,7 @@ def test_downloaded_file_size():
     assert size == 3634
 
 
-# TODO оформить в тест, добавить ассерты и использовать универсальный путь
+# TODO работа с xlsx, оформить в тест, добавить ассерты и использовать универсальный путь
 def test_xlsx():
     xlsx_path = os.path.join(resources_path, 'example_XLSX.xlsx')
 
@@ -68,7 +69,7 @@ def test_xlsx():
     print(sheet.cell(row=10, column=8).value)
 
 
-# TODO оформить в тест, добавить ассерты и использовать универсальный путь
+# TODO работа с xls, оформить в тест, добавить ассерты и использовать универсальный путь
 def test_xls():
     xls_file_path = os.path.join(resources_path, 'example_XLS.xls')
 
@@ -119,7 +120,7 @@ def test_zip():
             assert os.path.getsize(os.path.join(resources_path, unzipped_path)) == os.path.getsize(file)
 
 
-# TODO оформить в тест, добавить ассерты и использовать универсальный путь
+# TODO работа с PDF, оформить в тест, добавить ассерты и использовать универсальный путь
 def test_pdf():
     pdf_file_path = os.path.join(resources_path, 'PDF_Converter.pdf')
 
@@ -138,5 +139,3 @@ def test_pdf():
     print(f'\n1: {number_of_pages}')
     print(f'2: {page}')
     print(f'3: {text}')
-
-print('Все тесты прошли успешно!')
