@@ -138,3 +138,5 @@ def test_pdf():
     print(f'\n1: {number_of_pages}')
     print(f'2: {page}')
     print(f'3: {text}')
+
+print('Все тесты прошли успешно!')
